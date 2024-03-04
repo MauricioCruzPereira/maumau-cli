@@ -11,5 +11,7 @@
             "email": "mauriciopereira2310@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">=7.2"
+    }
 }
