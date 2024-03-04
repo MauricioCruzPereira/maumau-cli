@@ -1,6 +1,12 @@
 ## Aprendizado do projeto
 * Aprendendo a trabalhar com php puro e comandos shellscript, criando assim um CLI( interface de linha de comando) para rodar comandos configurados.
 
+## Requisitos
+* Php >=7.2
+* Composer
+* Git
+* Linux
+
 ## Passo a passo para rodar o projeto
 Clone o projeto
 ```sh
