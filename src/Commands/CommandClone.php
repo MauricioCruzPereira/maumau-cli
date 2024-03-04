@@ -18,6 +18,6 @@ class CommandClone implements DefaultCommandInterface{
   }
 
   public function Help() : string{
-    return '';
+    return 'Clone';
   }
 }

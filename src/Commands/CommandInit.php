@@ -13,12 +13,12 @@ class CommandInit implements DefaultCommandInterface{
     }
     
     shell_exec("git clone --branch {$branch} https://github.com/MauricioCruzPereira/core-maumau-cli.git");
-    
+
     return "Comando init executado com sucesso!" . PHP_EOL;
   }
 
 
   public function Help():string {
-    return '';
+    return 'Init';
   }
 }

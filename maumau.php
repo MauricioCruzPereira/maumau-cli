@@ -4,6 +4,7 @@
 require_once  "./vendor/autoload.php";
 
 use Src\Commands\CommandClone;
+use Src\Commands\CommandHelp;
 use Src\Commands\CommandInit;
 use Src\Commands\CommandVersion;
 
@@ -24,7 +25,8 @@ $long  = [
     "branch:",
     "build",
     "init",
-    "version"
+    "version",
+    "help"
 ];
 $options = getopt($short, $long);
 
@@ -43,8 +45,13 @@ switch($short){
   case 'build':
     echo "{$YELLOW}Em manutenção!" . PHP_EOL;
     break;
+
   case 'version':
     echo (new CommandVersion)->Version();
+    break;
+  
+  case 'help':
+    echo (new CommandHelp)->Help();
     break;
 
   default:

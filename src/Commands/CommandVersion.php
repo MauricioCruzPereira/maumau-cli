@@ -12,6 +12,6 @@ class CommandVersion implements DefaultCommandInterface{
   }
 
   public function Help():string{
-    return '';
+    return 'Version';
   }
 }
