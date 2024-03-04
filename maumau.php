@@ -1,6 +1,12 @@
 #!/usr/bin/php
 <?php
 
+require_once  "./vendor/autoload.php";
+
+use Src\Commands\CommandClone;
+use Src\Commands\CommandInit;
+use Src\Commands\CommandVersion;
+
 $RED    = "\033[0;31m"; //VERMELHO
 $GREEN  = "\033[0;32m"; //VERDE
 $YELLOW = "\033[0;33m"; //AMARELO
@@ -16,6 +22,7 @@ $short .= "c:b:";
 $long  = [
     "clone:",
     "branch:",
+    "build",
     "init",
     "version"
 ];
@@ -26,25 +33,20 @@ $short = array_key_first($options);
 switch($short){
   case 'c':
   case 'clone':
-    shell_exec("git clone {$options[$short]}");
-    echo "{$GREEN}Comando clone executado com sucesso!" . PHP_EOL;
-      
+    echo (new CommandClone)->Clone($options[$short]);      
     break;
 
   case 'init':
-    $branch = 'main';
-    if(isset($options['b']) || isset($options['branch'])){
-      $branch = $options['b'] ? $options['b'] : $options['branch'];
-    }
-    
-    shell_exec("git clone --branch {$branch} https://github.com/MauricioCruzPereira/core-maumau-cli.git");
-    echo "{$GREEN}Comando init executado com sucesso!" . PHP_EOL;
+    echo (new CommandInit)->Init($options);
     break;
 
-  case 'version':
-    echo 'v1.0.0' . PHP_EOL;
+  case 'build':
+    echo "{$YELLOW}Em manutenção!" . PHP_EOL;
     break;
-    
+  case 'version':
+    echo (new CommandVersion)->Version();
+    break;
+
   default:
     echo 'Comando inválido'. PHP_EOL;
 }
