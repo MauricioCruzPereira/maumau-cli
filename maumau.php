@@ -1,18 +1,12 @@
 #!/usr/bin/php
 <?php
 
-require_once  "./vendor/autoload.php";
+require_once __DIR__ . "/vendor/autoload.php";
 
 use Src\Commands\CommandClone;
 use Src\Commands\CommandHelp;
 use Src\Commands\CommandInit;
 use Src\Commands\CommandVersion;
-
-$RED    = "\033[0;31m"; //VERMELHO
-$GREEN  = "\033[0;32m"; //VERDE
-$YELLOW = "\033[0;33m"; //AMARELO
-$BLUE   = "\033[0;34m"; //AZUL
-$NC     = "\033[0m"; //BRANCO
 
 $short  = "";
 $short .= "c:b:";
@@ -43,7 +37,7 @@ switch($short){
     break;
 
   case 'build':
-    echo "{$YELLOW}Em manutenção!" . PHP_EOL;
+    echo "Em manutenção!" . PHP_EOL;
     break;
 
   case 'version':
