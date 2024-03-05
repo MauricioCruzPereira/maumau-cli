@@ -3,13 +3,14 @@
 
 require_once __DIR__ . "/vendor/autoload.php";
 
+use Src\Commands\CommandAlias;
 use Src\Commands\CommandClone;
 use Src\Commands\CommandHelp;
 use Src\Commands\CommandInit;
 use Src\Commands\CommandVersion;
 
 $short  = "";
-$short .= "c:b:";
+$short .= "c:b:a::";
 
 // Sem : O paramêtro não aceita dados
 // Com : Obriga a ter valor no paramêtro
@@ -19,17 +20,18 @@ $long  = [
     "branch:",
     "build",
     "init",
+    "alias::",
     "version",
     "help"
 ];
 $options = getopt($short, $long);
 
-$short = array_key_first($options);
+$command = array_key_first($options);
 
-switch($short){
+switch($command){
   case 'c':
-  case 'clone':
-    echo (new CommandClone)->Clone($options[$short]);      
+  case 'clone':    
+    echo (new CommandClone)->Clone($options[$command]);      
     break;
 
   case 'init':
@@ -38,6 +40,12 @@ switch($short){
 
   case 'build':
     echo "Em manutenção!" . PHP_EOL;
+    break;
+
+  case 'a':
+  case 'alias':
+        
+    echo (new CommandAlias)->Alias($options[$command]);
     break;
 
   case 'version':
